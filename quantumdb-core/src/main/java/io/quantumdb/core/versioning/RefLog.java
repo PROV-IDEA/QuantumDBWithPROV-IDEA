@@ -31,7 +31,8 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 @Slf4j
 @ToString
-@EqualsAndHashCode
+//@EqualsAndHashCode
+@EqualsAndHashCode(callSuper=false)
 public class RefLog {
 
 	@Data

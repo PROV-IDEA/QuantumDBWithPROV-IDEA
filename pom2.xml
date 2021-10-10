@@ -11,22 +11,23 @@
 	<version>0.4.2-SNAPSHOT</version>
 
 	<modules>
-		<module>DB2PROVModule</module>
+		
 		<module>quantumdb-core</module>
 		<module>quantumdb-postgresql</module>
 		<module>quantumdb-driver</module>
 		<module>quantumdb-cli</module>
 		<module>quantumdb-query-rewriter</module>
+		<module>DB2PROVModule</module>
+
 	</modules>
 
 	<properties>
-		<java.version>1.8</java.version>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
-		<aspectj.version>1.9.4</aspectj.version>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compliance.level>1.8</maven.compliance.level>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+		<aspectj.version>1.9.2</aspectj.version>
 	</properties>
 
 	<dependencies>
@@ -81,41 +82,121 @@
 			<artifactId>hamcrest-all</artifactId>
 			<version>1.3</version>
 		</dependency>
-
-		<!-- Mio -->
+		<!-- A PARTIR DE AQUÍ -->
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
-			<version>${aspectj.version}</version>
+			<version>1.9.2</version>
 		</dependency>
 	</dependencies>
-	<!-- Todo el build mio -->
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>io.quantumdb</groupId>
+				<artifactId>DB2PROVModule</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
+
 	<build>
+		<!-- Esta linea añadida -->
+		<sourceDirectory>${project.build.directory}/generated-sources/delombok</sourceDirectory>
 		<pluginManagement>
+
 			<plugins>
+				<!-- Sustituida por la de abajo -->
+				<!-- <plugin> <groupId>org.codehaus.mojo</groupId> <artifactId>aspectj-maven-plugin</artifactId> 
+					<version>1.11</version> <executions> <execution> <goals> <goal>compile</goal> 
+					</goals> </execution> </executions> <configuration> <complianceLevel>${maven.compliance.level}</complianceLevel> 
+					<source>${maven.compiler.source}</source> <target>${maven.compiler.target}</target> 
+					</configuration> </plugin> -->
+				<plugin>
+					<groupId>org.apache.maven.plugins</groupId>
+					<artifactId>maven-compiler-plugin</artifactId>
+					<version>3.8.1</version><!-- 2.5.1 -->
+					<configuration>
+						<encoding>UTF-8</encoding>
+						<source>${maven.compiler.source}</source>
+						<target>${maven.compiler.target}</target>
+					</configuration>
+				</plugin>
+
+
+
+				<!-- A partir de aquí -->
+				<plugin>
+					<groupId>org.projectlombok</groupId>
+					<artifactId>lombok-maven-plugin</artifactId>
+					<version>1.18.20.0</version><!-- 1.16.16.0 -->
+					<executions>
+						<execution>
+							<phase>generate-sources</phase>
+							<goals>
+								<goal>delombok</goal>
+							</goals>
+						</execution>
+					</executions>
+					<configuration>
+						<addOutputDirectory>false</addOutputDirectory>
+						<sourceDirectory>src/main/java</sourceDirectory>
+					</configuration>
+				</plugin>
 				<plugin>
 					<groupId>org.codehaus.mojo</groupId>
 					<artifactId>aspectj-maven-plugin</artifactId>
 					<version>1.11</version>
+					<configuration>
+						<complianceLevel>1.8</complianceLevel>
+						<source>1.8</source>
+						<target>1.8</target>
+						<proc>none</proc>
+						<showWeaveInfo>true</showWeaveInfo>
+						<forceAjcCompile>true</forceAjcCompile>
+						<sources />
+						<weaveDirectories>
+							<weaveDirectory>${project.build.directory}/classes</weaveDirectory>
+						</weaveDirectories>
+					</configuration>
+					<executions>
+						<execution>
+							<goals>
+								<goal>compile</goal>
+								<goal>test-compile</goal>
+							</goals>
+						</execution>
+					</executions>
 					<dependencies>
 						<dependency>
 							<groupId>org.aspectj</groupId>
 							<artifactId>aspectjtools</artifactId>
 							<version>${aspectj.version}</version>
 						</dependency>
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjrt</artifactId>
+							<version>1.9.2</version>
+						</dependency>
 					</dependencies>
+				</plugin>
+				<plugin>
+					<groupId>org.codehaus.mojo</groupId>
+					<artifactId>exec-maven-plugin</artifactId>
+					<version>1.2.1</version>
 					<executions>
 						<execution>
 							<goals>
-								<goal>compile</goal>
+								<goal>java</goal>
 							</goals>
 						</execution>
 					</executions>
 					<configuration>
-						<complianceLevel>${java.version}</complianceLevel>
+						 <mainClass>com.test.YourClass</mainClass> 
 					</configuration>
 				</plugin>
 			</plugins>
 		</pluginManagement>
 	</build>
+
 </project>
