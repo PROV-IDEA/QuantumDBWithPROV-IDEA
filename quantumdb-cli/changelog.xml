@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<changelog xmlns="http://www.quantumdb.io/xml/ns/quantumdb-changelog"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:schemaLocation="http://www.quantumdb.io/xml/ns/quantumdb-changelog-0.4.xsd">
+
+  <changeset id="create_users_table" author="Michael de Jong">
+    <description>Creates a table to store users in.</description>
+    <operations>
+      <createTable tableName="users">
+        <columns>
+          <column name="id" type="bigint" primaryKey="true" autoIncrement="true" />
+          <column name="email" type="text" nullable="false"/>
+          <column name="first_name" type="text" nullable="false" />
+          <column name="last_name" type="text" nullable="false" />
+          <column name="registered_at" type="timestamp" nullable="false" defaultExpression="NOW()" />
+        </columns>
+      </createTable>
+      <createIndex tableName="users" columnNames="email" unique="true" />
+    </operations>
+  </changeset>
+
+  <changeset id="create_messages_table" author="Michael de Jong">
+    <description>Creates a table where we can store all messages between users.</description>
+    <operations>
+      <createTable tableName="messages">
+        <columns>
+          <column name="id" type="bigint" primaryKey="true" autoIncrement="true" />
+          <column name="sender_id" type="bigint" nullable="false" />
+          <column name="receiver_id" type="bigint" nullable="false" />
+          <column name="body" type="text" nullable="false" />
+          <column name="created_at" type="timestamp" nullable="false" defaultExpression="NOW()" />
+        </columns>
+      </createTable>
+      <addColumn tableName="users">
+        <column name="email_on_new_message" type="boolean" nullable="false" defaultExpression="true" />
+      </addColumn>
+    </operations>
+  </changeset>
+</changelog>

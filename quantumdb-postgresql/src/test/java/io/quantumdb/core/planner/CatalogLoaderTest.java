@@ -27,6 +27,8 @@ public class CatalogLoaderTest {
 
 		try (Connection connection = database.createConnection()) {
 			Catalog catalog = CatalogLoader.load(connection, database.getCatalogName());
+			for(Table t:catalog.getTables())
+				System.out.println(t.getName());
 			Table table = catalog.getTable("Users");
 
 			assertNotNull(table.getColumn("Id"));
