@@ -13,8 +13,8 @@
 	<artifactId>quantumdb-query-rewriter</artifactId>
 	<version>${parent.version}</version>
 
-	<dependencies>
-		<!-- Mio -->
+	<!-- <dependencies>
+		Mio
 		<dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
@@ -25,8 +25,8 @@
 			<artifactId>DB2PROVModule</artifactId>
 			<version>${project.version}</version>
 		</dependency>
-		<!-- Mio -->
-	</dependencies>
+		Mio
+	</dependencies> -->
 
 
 	<!-- Mio -->
@@ -73,9 +73,16 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
+				<!-- <groupId>org.codehaus.mojo</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
+				<version>1.14.0</version> -->
+				<groupId>com.nickwongdev</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.12.1</version>
 				<configuration>
+				<complianceLevel>1.8</complianceLevel>
+						<source>1.8</source>
+						<target>1.8</target>
 					<aspectLibraries>
 						<aspectLibrary>
 							<groupId>io.quantumdb</groupId>

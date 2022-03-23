@@ -14,7 +14,7 @@
 
 	<dependencies>
 		<!-- Mio -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>1.9.4</version>
@@ -23,7 +23,7 @@
 			<groupId>io.quantumdb</groupId>
 			<artifactId>DB2PROVModule</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency> -->
 		<!-- Mio -->
 		<dependency>
 			<groupId>io.quantumdb</groupId>
@@ -88,7 +88,7 @@
 			</plugin>
 
 
-			<!-- Mio -->
+			<!-- Mio 
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -115,10 +115,10 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<executions>
 					<execution>
-						<!-- Modifying output directory of default compile because non-weaved 
+						Modifying output directory of default compile because non-weaved 
 							classes must be stored in separate folder to not confuse ajc by reweaving 
 							already woven classes (which leads to to ajc error message like "bad weaverState.Kind: 
-							-115") -->
+							-115")
 						<id>default-compile</id>
 						<configuration>
 							<compilerArgs>
@@ -161,7 +161,7 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-surefire-plugin</artifactId>
 				<version>2.22.2</version>
-			</plugin>
+			</plugin> -->
 
 		</plugins>
 	</build>

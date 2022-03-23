@@ -52,11 +52,6 @@
 			<version>${project.version}</version>
 		</dependency>
 
-		<dependency>
-			<groupId>io.quantumdb</groupId>
-			<artifactId>DB2PROVModule</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/org.postgresql/postgresql -->
 		<dependency>
@@ -97,42 +92,18 @@
 
 
 
-		<dependency>
-			<groupId>org.apache.jena</groupId>
-			<artifactId>jena-arq</artifactId>
-			<version>3.9.0</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.openprovenance.prov/prov-model -->
-		<dependency>
-			<groupId>org.openprovenance.prov</groupId>
-			<artifactId>prov-model</artifactId>
-			<version>0.9.20</version>
-		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.openprovenance.prov/prov-template -->
-		<dependency>
-			<groupId>org.openprovenance.prov</groupId>
-			<artifactId>prov-template</artifactId>
-			<!-- <version>0.7.3</version> -->
-			<version>0.7.3</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.apache.jena</groupId> <artifactId>jena-arq</artifactId> 
+			<version>3.9.0</version> </dependency> https://mvnrepository.com/artifact/org.openprovenance.prov/prov-model 
+			<dependency> <groupId>org.openprovenance.prov</groupId> <artifactId>prov-model</artifactId> 
+			<version>0.9.20</version> </dependency> https://mvnrepository.com/artifact/org.openprovenance.prov/prov-template 
+			<dependency> <groupId>org.openprovenance.prov</groupId> <artifactId>prov-template</artifactId> 
+			<version>0.7.3</version> <version>0.7.3</version> </dependency> -->
 		<!-- https://mvnrepository.com/artifact/org.openprovenance.prov/prov-interop -->
-		<dependency>
-			<groupId>org.openprovenance.prov</groupId>
-			<artifactId>prov-interop</artifactId>
-			<!-- <version>0.8.0</version> -->
-			<version>0.8.0</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.9.8</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.apache.xmlgraphics</groupId>
-			<artifactId>batik-swing</artifactId>
-			<version>1.7</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.openprovenance.prov</groupId> <artifactId>prov-interop</artifactId> 
+			<version>0.8.0</version> <version>0.8.0</version> </dependency> <dependency> 
+			<groupId>com.fasterxml.jackson.core</groupId> <artifactId>jackson-annotations</artifactId> 
+			<version>2.9.8</version> </dependency> <dependency> <groupId>org.apache.xmlgraphics</groupId> 
+			<artifactId>batik-swing</artifactId> <version>1.7</version> </dependency> -->
 
 		<dependency>
 			<groupId>org.slf4j</groupId>
@@ -140,11 +111,8 @@
 			<version>1.7.5</version>
 		</dependency>
 		<!-- https://mvnrepository.com/artifact/org.mongodb/mongo-java-driver -->
-		<dependency>
-			<groupId>org.mongodb</groupId>
-			<artifactId>mongo-java-driver</artifactId>
-			<version>3.6.0</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.mongodb</groupId> <artifactId>mongo-java-driver</artifactId> 
+			<version>3.6.0</version> </dependency> -->
 
 		<!-- Hasta aquí mio -->
 	</dependencies>
@@ -162,112 +130,7 @@
 
 
 	<build>
-		<!-- Plugin nmanagement mio -->
-		<pluginManagement>
-			<plugins>
-				<plugin>
-					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>2.5.1</version>
-					<inherited>true</inherited>
-					<configuration>
-						<source>11</source>
-						<target>11</target>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>com.nickwongdev</groupId>
-					<artifactId>aspectj-maven-plugin</artifactId>
-					<version>1.12.0</version>
-					<dependencies>
-						<dependency>
-							<groupId>org.aspectj</groupId>
-							<artifactId>aspectjrt</artifactId>
-							<version>${aspectj.version}</version>
-						</dependency>
-						<dependency>
-							<groupId>org.aspectj</groupId>
-							<artifactId>aspectjtools</artifactId>
-							<version>${aspectj.version}</version>
-						</dependency>
-						<!-- <dependency> <groupId>org.projectlombok</groupId> <artifactId>lombok</artifactId> 
-							<version>1.18.20</version> <scope>compile</scope> </dependency> -->
-					</dependencies>
-					<configuration>
-						<complianceLevel>1.11</complianceLevel>
-						<source>1.11</source>
-						<target>1.11</target>
-					</configuration>
-					<executions>
-						<execution>
-							<phase>compile</phase>
-							<goals>
-								<goal>compile</goal>
-								<goal>test-compile</goal>
-							</goals>
-							<!-- <configuration> <aspectLibraries combine.self="override"> <aspectLibrary> 
-								<groupId>org.springframework</groupId> <artifactId>spring-aspects</artifactId> 
-								</aspectLibrary> </aspectLibraries> </configuration> -->
-						</execution>
-					</executions>
 
-				</plugin>
-
-				<plugin>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven.compiler.plugin.version}</version>
-					<configuration>
-						<source>11</source>
-						<target>11</target>
-						<!-- IMPORTANT -->
-						<useIncrementalCompilation>false</useIncrementalCompilation>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.eclipse.m2e</groupId>
-					<artifactId>lifecycle-mapping</artifactId>
-					<version>1.0.0</version>
-					<configuration>
-						<lifecycleMappingMetadata>
-							<pluginExecutions>
-								<pluginExecution>
-									<pluginExecutionFilter>
-										<groupId>org.codehaus.mojo</groupId>
-										<artifactId>aspectj-maven-plugin</artifactId>
-										<versionRange>[1.11,)</versionRange>
-
-										<configuration>
-											<aspectLibraries>
-												<aspectLibrary>
-													<groupId>io.quantumdb</groupId>
-													<artifactId>DB2PROVAspects</artifactId>
-												</aspectLibrary>
-											</aspectLibraries>
-										</configuration>
-
-
-
-										<goals>
-											<goal>compile</goal>
-											<goal>test-compile</goal>
-										</goals>
-									</pluginExecutionFilter>
-									<action>
-										<ignore /><!-- -->
-									</action>
-								</pluginExecution>
-							</pluginExecutions>
-						</lifecycleMappingMetadata>
-					</configuration>
-				</plugin>
-				<plugin>
-					<groupId>org.codehaus.mojo</groupId>
-					<artifactId>exec-maven-plugin</artifactId>
-					<version>1.6.0</version>
-				</plugin>
-
-			</plugins>
-		</pluginManagement>
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -294,6 +157,101 @@
 					</execution>
 				</executions>
 			</plugin>
+
+
+			<!-- Mio a partir de aquí -->
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-antrun-plugin</artifactId>
+				<version>1.8</version>
+				<executions>
+					<execution>
+						<id>unwovenClassesFolder</id>
+						<phase>generate-resources</phase>
+						<configuration>
+							<tasks>
+								<delete dir="${project.build.directory}/unwoven-classes" />
+								<mkdir dir="${project.build.directory}/unwoven-classes" />
+							</tasks>
+						</configuration>
+						<goals>
+							<goal>run</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<executions>
+					<execution>
+						<!-- Modifying output directory of default compile because non-weaved 
+							classes must be stored in separate folder to not confuse ajc by reweaving 
+							already woven classes (which leads to to ajc error message like "bad weaverState.Kind: 
+							-115") -->
+						<id>default-compile</id>
+						<configuration>
+							<compilerArgs>
+								<arg>-d</arg>
+								<arg>${project.build.directory}/unwoven-classes</arg>
+							</compilerArgs>
+						</configuration>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId>
+				<version>1.11</version>
+				<!-- <dependencies>
+						<dependency>
+							<groupId>org.aspectj</groupId>
+							<artifactId>aspectjtools</artifactId>
+							<version>${aspectj.version}</version>
+						</dependency>
+						 <dependency>
+							<groupId>io.quantumdb</groupId>
+							<artifactId>DB2PROVModule</artifactId>
+							<version>${project.version}</version>
+						</dependency>
+					</dependencies> -->
+					<configuration>
+						<complianceLevel>1.8</complianceLevel>
+						<source>1.8</source>
+						<target>1.8</target>
+					
+					<aspectLibraries>
+						<aspectLibrary>
+							<groupId>io.quantumdb</groupId>
+							<artifactId>DB2PROVModule</artifactId>
+							<version>${project.version}</version>
+						</aspectLibrary>
+					</aspectLibraries>
+
+					<forceAjcCompile>true</forceAjcCompile>
+					<sources />
+					<weaveDirectories>
+						<weaveDirectory>${project.build.directory}/unwoven-classes</weaveDirectory>
+					</weaveDirectories>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>process-classes</phase>
+						<goals>
+							<goal>compile</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-surefire-plugin</artifactId>
+				<version>2.22.2</version>
+			</plugin>
+
 		</plugins>
 	</build>
 

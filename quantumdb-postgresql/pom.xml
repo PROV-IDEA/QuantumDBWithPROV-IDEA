@@ -16,7 +16,7 @@
 
 	<dependencies>
 		<!-- Mio -->
-		<dependency>
+		<!-- <dependency>
 			<groupId>org.aspectj</groupId>
 			<artifactId>aspectjrt</artifactId>
 			<version>1.9.4</version>
@@ -25,7 +25,7 @@
 			<groupId>io.quantumdb</groupId>
 			<artifactId>DB2PROVModule</artifactId>
 			<version>${project.version}</version>
-		</dependency>
+		</dependency> -->
 		<!-- <dependency>Lo añadi para usar el writer en este módulo
 			<groupId>${project.groupId}</groupId>
 			<artifactId>quantumdb-cli</artifactId>

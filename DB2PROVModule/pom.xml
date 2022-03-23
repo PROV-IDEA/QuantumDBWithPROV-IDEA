@@ -1,14 +1,15 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-
 	<parent>
-		<groupId>io.quantumdb</groupId>
 		<artifactId>quantumdb</artifactId>
+		<groupId>io.quantumdb</groupId>
 		<version>0.4.2-SNAPSHOT</version>
 	</parent>
+	<modelVersion>4.0.0</modelVersion>
 
+
+    <name>DB2PROVModule</name>
 	<artifactId>DB2PROVModule</artifactId>
 	<!-- <packaging>jar</packaging> -->
 	<!-- <packaging>jar</packaging> -->
@@ -74,8 +75,11 @@
 	<build>
 		<plugins>
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>aspectj-maven-plugin</artifactId>
+				<!-- <groupId>org.codehaus.mojo</groupId>
+				<artifactId>aspectj-maven-plugin</artifactId> -->
+				<groupId>com.nickwongdev</groupId>
+                <artifactId>aspectj-maven-plugin</artifactId>
+                <version>1.12.1</version>
 			</plugin>
 		</plugins>
 	</build>
