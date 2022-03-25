@@ -22,20 +22,49 @@
 		<!-- Mio -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
-		<java.source-target.version>1.11</java.source-target.version>
+		<java.source-target.version>11</java.source-target.version>
 		<aspectj.version>1.9.4</aspectj.version>
 		<tools.jar.version>11.0.2</tools.jar.version>
 		<!-- <tools.jar.path>${java.home}/../lib/tools.jar</tools.jar.path> -->
 		<project.basedir>.</project.basedir>
 
 	</properties>
-
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjrt</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.aspectj</groupId>
+				<artifactId>aspectjtools</artifactId>
+				<version>${aspectj.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>io.quantumdb</groupId>
+				<artifactId>PROVIDEA</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<dependencies>
 		<!--Lo añadi yo al quitarlo del principal -->
 		<!-- <dependency> <groupId>org.projectlombok</groupId> <artifactId>lombok</artifactId> 
 			<version>1.18.20</version> <scope>compile</scope> </dependency> -->
 
+		<dependency>
+			<groupId>io.quantumdb</groupId>
+			<artifactId>PROVIDEA</artifactId>
+			<version>${project.version}</version>
+			<exclusions>
+				<exclusion>
+					<groupId>io.quantumdb</groupId>
+					<artifactId>quantumdb-core</artifactId>
 
+				</exclusion>
+			</exclusions>
+		</dependency>
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
@@ -117,49 +146,14 @@
 		<!-- Hasta aquí mio -->
 	</dependencies>
 	<!-- Mio -->
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.openprovenance.prov</groupId>
-				<artifactId>prov-model</artifactId>
-				<!-- <version>0.7.4-SNAPSHOT</version> -->
-				<version>0.7.4-SNAPSHOT</version>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
+	<!-- <dependencyManagement> <dependencies> <dependency> <groupId>org.openprovenance.prov</groupId> 
+		<artifactId>prov-model</artifactId> <version>0.7.4-SNAPSHOT</version> <version>0.7.4-SNAPSHOT</version> 
+		</dependency> </dependencies> </dependencyManagement> -->
 
 
 	<build>
 
 		<plugins>
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-assembly-plugin</artifactId>
-				<version>3.3.0</version>
-				<configuration>
-					<archive>
-						<manifest>
-							<addClasspath>true</addClasspath>
-							<mainClass>Main</mainClass>
-						</manifest>
-					</archive>
-					<descriptorRefs>
-						<descriptorRef>jar-with-dependencies</descriptorRef>
-					</descriptorRefs>
-				</configuration>
-				<executions>
-					<execution>
-						<id>assemble-all</id>
-						<phase>package</phase>
-						<goals>
-							<goal>single</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-
-			<!-- Mio a partir de aquí -->
 
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -202,31 +196,19 @@
 			</plugin>
 
 			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
+				<!-- <groupId>org.codehaus.mojo</groupId> <artifactId>aspectj-maven-plugin</artifactId> 
+					<version>1.11</version> -->
+				<groupId>com.nickwongdev</groupId>
 				<artifactId>aspectj-maven-plugin</artifactId>
-				<version>1.11</version>
-				<!-- <dependencies>
-						<dependency>
-							<groupId>org.aspectj</groupId>
-							<artifactId>aspectjtools</artifactId>
-							<version>${aspectj.version}</version>
-						</dependency>
-						 <dependency>
-							<groupId>io.quantumdb</groupId>
-							<artifactId>DB2PROVModule</artifactId>
-							<version>${project.version}</version>
-						</dependency>
-					</dependencies> -->
-					<configuration>
-						<complianceLevel>1.8</complianceLevel>
-						<source>1.8</source>
-						<target>1.8</target>
-					
+				<version>1.12.6</version>
+				<!-- <dependencies> <dependency> <groupId>io.quantumdb</groupId> <artifactId>PROVIDEA</artifactId> 
+					</dependency> </dependencies> -->
+				<configuration>
+
 					<aspectLibraries>
 						<aspectLibrary>
 							<groupId>io.quantumdb</groupId>
-							<artifactId>DB2PROVModule</artifactId>
-							<version>${project.version}</version>
+							<artifactId>PROVIDEA</artifactId>
 						</aspectLibrary>
 					</aspectLibraries>
 
@@ -244,6 +226,19 @@
 						</goals>
 					</execution>
 				</executions>
+
+				<dependencies>
+					<dependency>
+						<groupId>io.quantumdb</groupId>
+						<artifactId>PROVIDEA</artifactId>
+						<version>${project.version}</version>
+					</dependency>
+					<dependency>
+						<groupId>org.aspectj</groupId>
+						<artifactId>aspectjtools</artifactId>
+						<version>${aspectj.version}</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 
 			<plugin>
@@ -253,6 +248,6 @@
 			</plugin>
 
 		</plugins>
-	</build>
 
+	</build>
 </project>

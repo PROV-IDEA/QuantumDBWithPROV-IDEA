@@ -14,7 +14,7 @@ import org.junit.rules.ExternalResource;
 
 import io.quantumdb.core.backends.DatabaseMigrator.MigrationException;
 import io.quantumdb.core.utils.RandomHasher;
-import jline.ANSIBuffer;
+
 import lombok.Getter;
 import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
@@ -37,10 +37,10 @@ public class PostgresqlDatabase extends ExternalResource {
 		this.jdbcUser = getProperty("jdbc.user", "PG_USER").orElse(null);
 		this.jdbcPass = getProperty("jdbc.pass", "PG_PASSWORD").orElse(null);
 	
-		System.out.println(getProperty("jdbc.user"));
+		
 		assumeTrue("No 'jdbc.user' or 'PG_USER' specified", jdbcUser != null);
 		assumeTrue("No 'jdbc.pass' or 'PG_PASSWORD' specified", jdbcPass != null);
-		System.out.println("HOLA");
+		
 		this.catalogName = "db_" + RandomHasher.generateHash();
 		try (Connection conn = DriverManager.getConnection(jdbcUrl + "/" + jdbcUser, jdbcUser, jdbcPass)) {
 			conn.createStatement().execute("DROP DATABASE IF EXISTS " + catalogName + ";");
@@ -69,7 +69,7 @@ public class PostgresqlDatabase extends ExternalResource {
 	@SneakyThrows
 	public void after() {
 		connection.close();
-		System.out.println("cierra conexion");
+		
 		try (Connection conn = DriverManager.getConnection(jdbcUrl + "/" + jdbcUser, jdbcUser, jdbcPass)) {
 			conn.createStatement()
 					.execute("SELECT COUNT(pg_terminate_backend(pg_stat_activity.pid))" + "FROM pg_stat_activity "
@@ -77,7 +77,7 @@ public class PostgresqlDatabase extends ExternalResource {
 							+ "AND pid <> pg_backend_pid();");
 
 			
-			new ANSIBuffer().append("Antes de eliminar").toString();
+		
 
 			// conn.createStatement().execute("DROP DATABASE " + catalogName + ";");
 		}
@@ -106,8 +106,7 @@ public class PostgresqlDatabase extends ExternalResource {
 			config.load(prIS);
 			for (String key : keys) {
 				String property = config.getProperty(key);
-				System.out.println(key + " " + property);
-				new ANSIBuffer().append(key + " " + property).toString();
+				
 				if (property != null) {
 					return Optional.of(property);
 				}
@@ -118,7 +117,7 @@ public class PostgresqlDatabase extends ExternalResource {
 
 			}
 		} catch (IOException ioe) {
-			System.out.println(ioe.getMessage());
+			
 			log.error("Error al el fichero de propiedades persistence.properties " + ioe.getMessage());
 
 		}

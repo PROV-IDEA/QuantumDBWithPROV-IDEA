@@ -11,12 +11,12 @@
 	<version>0.4.2-SNAPSHOT</version>
 
 	<modules>
-		<!-- <module>DB2PROVModule</module> -->
 		<module>quantumdb-core</module>
 		<module>quantumdb-postgresql</module>
 		<module>quantumdb-driver</module>
 		<module>quantumdb-cli</module>
 		<module>quantumdb-query-rewriter</module>
+		<module>PROVIDEA</module>
 	</modules>
 
 	<!-- Mio marzo -->
@@ -32,22 +32,23 @@
 	</dependencyManagement>
 	<!-- Mio -->
 	<properties>
-		<java.version>1.8</java.version>
-		<maven.compiler.source>1.8</maven.compiler.source>
-		<maven.compiler.target>1.8</maven.compiler.target>
+		<java.version>11</java.version>
+		<maven.compiler.source>11</maven.compiler.source>
+		<maven.compiler.target>11</maven.compiler.target>
 		<aspectj.version>1.9.4</aspectj.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>io.quantumdb</groupId>
-			<artifactId>DB2PROVModule</artifactId>
-			<version>${project.version}</version>
-		</dependency>
 
+
+
+
+
+	<dependencies>
+		<!-- <dependency> <groupId>io.quantumdb</groupId> <artifactId>DB2PROVModule</artifactId> 
+			<version>4.0.0</version> </dependency> -->
 		<!-- Language extensions -->
 		<dependency>
 			<groupId>org.projectlombok</groupId>
@@ -100,32 +101,27 @@
 		</dependency>
 
 		<!-- Mio -->
-		<dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>${aspectj.version}</version>
-		</dependency>
+		<!-- <dependency> <groupId>org.aspectj</groupId> <artifactId>aspectjrt</artifactId> 
+			<version>${aspectj.version}</version> </dependency> -->
 	</dependencies>
 	<!-- Todo el build mio -->
 	<build>
 		<pluginManagement>
 			<plugins>
 				<plugin>
-					<!-- <groupId>org.codehaus.mojo</groupId> <artifactId>aspectj-maven-plugin</artifactId> -->
 					<groupId>com.nickwongdev</groupId>
 					<artifactId>aspectj-maven-plugin</artifactId>
-					<version>1.12.1</version>
+					<version>1.12.6</version>
+					<!-- <groupId>com.nickwongdev</groupId> <artifactId>aspectj-maven-plugin</artifactId> 
+						<version>1.12.1</version> -->
 					<dependencies>
 						<dependency>
 							<groupId>org.aspectj</groupId>
 							<artifactId>aspectjtools</artifactId>
 							<version>${aspectj.version}</version>
 						</dependency>
-						<dependency>
-							<groupId>io.quantumdb</groupId>
-							<artifactId>DB2PROVModule</artifactId>
-							<version>${project.version}</version>
-						</dependency>
+						<!-- <dependency> <groupId>io.quantumdb</groupId> <artifactId>DB2PROVModule</artifactId> 
+							<version>${project.version}</version> </dependency> -->
 					</dependencies>
 					<executions>
 						<execution>

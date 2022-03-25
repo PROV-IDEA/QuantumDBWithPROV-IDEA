@@ -13,18 +13,7 @@
 	<version>0.4.2-SNAPSHOT</version>
 
 	<dependencies>
-		<!-- Mio -->
-		<!-- <dependency>
-			<groupId>org.aspectj</groupId>
-			<artifactId>aspectjrt</artifactId>
-			<version>1.9.4</version>
-		</dependency>
-		<dependency>
-			<groupId>io.quantumdb</groupId>
-			<artifactId>DB2PROVModule</artifactId>
-			<version>${project.version}</version>
-		</dependency> -->
-		<!-- Mio -->
+		
 		<dependency>
 			<groupId>io.quantumdb</groupId>
 			<artifactId>quantumdb-core</artifactId>
@@ -87,81 +76,6 @@
 				</executions>
 			</plugin>
 
-
-			<!-- Mio 
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-antrun-plugin</artifactId>
-				<version>1.8</version>
-				<executions>
-					<execution>
-						<id>unwovenClassesFolder</id>
-						<phase>generate-resources</phase>
-						<configuration>
-							<tasks>
-								<delete dir="${project.build.directory}/unwoven-classes" />
-								<mkdir dir="${project.build.directory}/unwoven-classes" />
-							</tasks>
-						</configuration>
-						<goals>
-							<goal>run</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<executions>
-					<execution>
-						Modifying output directory of default compile because non-weaved 
-							classes must be stored in separate folder to not confuse ajc by reweaving 
-							already woven classes (which leads to to ajc error message like "bad weaverState.Kind: 
-							-115")
-						<id>default-compile</id>
-						<configuration>
-							<compilerArgs>
-								<arg>-d</arg>
-								<arg>${project.build.directory}/unwoven-classes</arg>
-							</compilerArgs>
-						</configuration>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.codehaus.mojo</groupId>
-				<artifactId>aspectj-maven-plugin</artifactId>
-				<configuration>
-					<aspectLibraries>
-						<aspectLibrary>
-							<groupId>io.quantumdb</groupId>
-							<artifactId>DB2PROVModule</artifactId>
-						</aspectLibrary>
-					</aspectLibraries>
-
-					<forceAjcCompile>true</forceAjcCompile>
-					<sources />
-					<weaveDirectories>
-						<weaveDirectory>${project.build.directory}/unwoven-classes</weaveDirectory>
-					</weaveDirectories>
-				</configuration>
-				<executions>
-					<execution>
-						<phase>process-classes</phase>
-						<goals>
-							<goal>compile</goal>
-						</goals>
-					</execution>
-				</executions>
-			</plugin>
-
-			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-surefire-plugin</artifactId>
-				<version>2.22.2</version>
-			</plugin> -->
 
 		</plugins>
 	</build>
