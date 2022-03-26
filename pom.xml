@@ -16,7 +16,6 @@
 		<module>quantumdb-driver</module>
 		<module>quantumdb-cli</module>
 		<module>quantumdb-query-rewriter</module>
-		<module>PROVIDEA</module>
 	</modules>
 
 	<!-- Mio marzo -->

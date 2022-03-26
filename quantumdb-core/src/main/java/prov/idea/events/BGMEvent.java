@@ -9,11 +9,7 @@ public class BGMEvent extends EventObject {
 	
 	@Override
 	public String toString() {
-		//Bea añadidas estas líneas hasta el return
-		String aux= "\u0027";
-		System.out.println("value en provenanceValueType es "+value);
-		String newValue= StringUtils.replace(value,aux,"'");
-		System.out.println("newValue en provenanceValueType es "+newValue);
+		
 		return "BGMEvent [executionID=" + executionID + ", className=" + className + ", executionIdMethod="
 				+ executionIdMethod + ", varName=" + varName + ", value=" + value + ", identifier=" + identifier
 				+ ", type=" + type + ", state=" + state + "]";
