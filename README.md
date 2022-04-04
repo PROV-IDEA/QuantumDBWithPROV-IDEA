@@ -25,13 +25,16 @@ For testing QuantumDB with PROV-IDEA you'll want to:
 
 To run the Maven build, do:
 
+
    mvn clean install -Dmaven.test.skip=true
+   
 
 ### Running
 
 To test QuantumDB with PROV-IDEA we suggest using the QuantumDB CLI tool (recommended and easiest option to manage databases with QuantumDB). For this task, we suggest executing class Cli in package io.quantumdb.cli of quantumdb-cli module. The changelog.xml file is under quantumdb-cli module, which includes a copy table change named 'changes', aimed at creating a new table, named 'technician', as a copy of the columns and data of a table called 'employee' (so, table 'employee' must exist in database <database>).
 
 Use the followings commands:
+     
 
 - init --host=localhost:5432 --database=<database> --username=<username> --password=<password>
     
