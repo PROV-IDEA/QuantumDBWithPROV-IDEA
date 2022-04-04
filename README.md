@@ -16,10 +16,10 @@ For testing QuantumDB with PROV-IDEA you'll want to:
 
 
       * Have a PostgreSQL database server running to test and run against. PostgreSQL is used by QuantumDB as database to be evolved. It should be running 
-      on the default  URL postgres://localhost:5432. A database \<database\> has to be created.
+      on the default  URL postgres://localhost:5432. A database <database> has to be created.
       
       * Have a MongoDB database server running to test and run against. MongoDB is used by PROV-IDEA as database to store provenance data. It should be running 
-      on the default  URL mongodb://localhost:27017, and with a **PROVIDEA** database and an **Evolution_Changes** collection.
+      on the default  URL mongodb://localhost:27017, and with a 'PROVIDEA' database and an 'Evolution_Changes' collection.
 
 ## Building
 
