@@ -101,7 +101,7 @@ public class SetBindingsListener implements BGMEventListener {
 
 		try {
 			mongo = new Mongo("127.0.0.1", 27017);
-			db = mongo.getDB("PROVDISEA");
+			db = mongo.getDB("PROVIDEA");
 			col = db.getCollection("Schema_Changes");
 //		} catch (UnknownHostException e) {
 //			// TODO Auto-generated catch block
