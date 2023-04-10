@@ -36,13 +36,10 @@ import com.mongodb.MongoException;
 
 import prov.idea.events.BGMEvent;
 
-//import aspects.Stopwatch;
 
 public class SetBindingsListener implements BGMEventListener {
 
-//	Stopwatch insertClass;
-//	Stopwatch insertSeq;
-//	Stopwatch insertSM;
+
 
 	ExecutorService exec = MoreExecutors.getExitingExecutorService((ThreadPoolExecutor) Executors.newFixedThreadPool(8),
 			100_000, TimeUnit.DAYS// period after which executor will be automatically closed
@@ -63,8 +60,7 @@ public class SetBindingsListener implements BGMEventListener {
 	public static final String TMPL_NS = "http://openprovenance.org/tmpl#";
 	public static final String XSD_PREFIX = "xsd";
 	public static final String XSD_NS = "http://www.w3.org/2001/XMLSchema#";
-	// Pregunta para Carlos: por qué no hay ningún prefijo de los de uml2prov?
-	// Bea
+
 	public static final String O2P_PREFIX = "o2p";
 	public static final String O2P_NS = "http://uml2prov.unirioja.es/ns/o2p#";
 	public static final String SCH2P_PREFIX = "sch2p";
@@ -81,10 +77,6 @@ public class SetBindingsListener implements BGMEventListener {
 	static DBCollection col;
 	static BasicDBObjectBuilder docBuilder;
 
-//Bea: Supuestamente, no se usan templates, los comento para limpiar
-//	static TreeMap<String, Document> classTemplates = new TreeMap<String, Document>();
-//	static TreeMap<String, Document> seqTemplates = new TreeMap<String, Document>();
-//	static TreeMap<String, Document> stateTemplates = new TreeMap<String, Document>();
 
 	static {
 
@@ -93,7 +85,7 @@ public class SetBindingsListener implements BGMEventListener {
 		ns.register(VAR_PREFIX, VAR_NS);
 		ns.register(TMPL_PREFIX, TMPL_NS);
 		ns.register(XSD_PREFIX, XSD_NS);
-		// Bea
+		
 		ns.register(O2P_PREFIX, O2P_NS);
 		ns.register(SCH2P_PREFIX, SCH2P_NS);
 		ns.register(D2P_PREFIX, D2P_NS);
