@@ -135,7 +135,7 @@ public class SetBindingsListener implements BGMEventListener {
 					newColumnValueLinkedControl = 0;
 				}
 
-			} else if (linkedControl && (e.getVarName().compareTo("sourColumn") == 0)) {
+			} else if (linkedControl && (e.getVarName().compareTo("inputColumnDef") == 0)) {
 				linkedControl = false;
 
 			} else if (linkedControl && (e.getVarName().compareTo("inputColumnDef") == 0)) {
