@@ -4,11 +4,53 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://www.quantumdb.io/xml/ns/quantumdb-changelog-0.4.xsd">
 
-	<changeset id="v" author="Bea">
+
+ 
+	<changeset id="copy-1" author="John">
 		<description>Copy a table.</description>
 		<operations>
-	 	 <copyTable sourceTableName="empleado" targetTableName="cliente" ></copyTable> 
-		 <sql>insert INTO cliente select * from empleado;</sql>
+	 	 	<copyTable sourceTableName="developer_sub_b" targetTableName="developer_sub_b_old" ></copyTable> 
+			<sql>insert INTO  developer_sub_b_old select * from  developer_sub_b;</sql>
 		</operations>
 	</changeset>
+	<!--the tables to be merged must be in the changeset name-->
+	<!--<changeset id="merge-2-developer_sub_a-developer_sub_b" author="Peter">
+		<description>Merge a table.</description>
+		<operations>
+	 	 	<createTable tableName="developer_sub_a_new">
+				  <columns>
+				  	<column name="id" type="integer" primaryKey="true" />
+				  	<column name="name" type="character varying"  />
+				  	<column name="surname" type="character varying"  />
+				  	<column name="email" type="character varying"  />
+				  </columns>
+			</createTable>
+			<sql>insert INTO developer_sub_a_new (select * from developer_sub_a union select * from developer_sub_b);</sql>
+			<dropTable tableName="developer_sub_a" />
+			<dropTable tableName="developer_sub_b" />
+		</operations>
+	</changeset>-->
+	<!--The table to be decomposed must be in the changeset name-->
+	<!--<changeset id="decom-3-developer_sub_a_new" author="Michael">
+		<description>Decompose a table.</description>
+		<operations>
+	 	 	<createTable tableName="developer_sub_a">
+				  <columns>
+				  	<column name="id" type="integer" primaryKey="true" />
+				  	<column name="name" type="character varying"  />
+				  	<column name="surname" type="character varying"  />
+				  </columns>
+			</createTable>
+			<sql>insert INTO developer_sub_a select id, name, surname from developer_sub_a_new;</sql>
+			<createTable tableName="contact">
+				  <columns>
+					<column name="id" type="integer" primaryKey="true" />
+				  	<column name="email" type="character varying"  />
+				  </columns>
+			</createTable>
+			<sql>insert INTO contact select id, email from developer_sub_a_new;</sql>
+			<dropTable tableName="developer_sub_a_new" />
+		</operations>
+	</changeset>-->
+	
 </changelog>

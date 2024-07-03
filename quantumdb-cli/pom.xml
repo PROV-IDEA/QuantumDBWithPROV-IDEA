@@ -13,11 +13,10 @@
 	<version>0.4.2-SNAPSHOT</version>
 
 	<dependencies>
-
 		<dependency>
 			<groupId>io.quantumdb</groupId>
 			<artifactId>quantumdb-core</artifactId>
-			<version>${project.version}</version>
+			<version>0.4.2-SNAPSHOT</version>
 			<exclusions>
 				<exclusion>
 					<groupId>xml-apis</groupId>
@@ -59,7 +58,8 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+		<!--
+		https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
 		<dependency>
 			<groupId>com.fasterxml.jackson.dataformat</groupId>
 			<artifactId>jackson-dataformat-xml</artifactId>
@@ -83,7 +83,7 @@
 			</exclusions>
 		</dependency>
 
-		
+
 	</dependencies>
 
 	<build>
