@@ -1159,7 +1159,6 @@ public class BGMEventInstrumenter {
 				targetTableRef = targetTable2Ref;
 		}
 		if (DMOsql != null) {
-			// Bea: System.out.println("entra bb");
 			int indexSelect = DMOsql.indexOf("select");
 			int indexUnion = DMOsql.indexOf("union");
 			////////////////////////////////////////////////////////////////////////////
@@ -1537,7 +1536,6 @@ public class BGMEventInstrumenter {
 		if (nameVar.equalsIgnoreCase("targetColumn")) {
 			prefix1 = "tc";
 			prefix2 = "t";
-			System.out.println("Bea: " + operatorType + " ID_COL" + ID_COL);
 		} else if (nameVar.equalsIgnoreCase("sourceColumn")) {
 			prefix1 = "sc";
 			prefix2 = "s";
