@@ -8,7 +8,7 @@ In this repository we present our approach for making the QuantumDB tool provena
 
 For more information, please checkout the link:
 
-* [PROV-IDEA. Supplementary material. (2022)](https://zenodo.org/record/6380743#.YjtpyerMKUk)
+* [PROV-IDEA. Supplementary material. (2022)](https://zenodo.org/records/10701239)
 
 ## Setup environment
 
