@@ -6,7 +6,7 @@
 
 
  
-	<changeset id="copy-1" author="John">
+	<changeset id="copy-1" author="Olivia">
 		<description>Copy a table.</description>
 		<operations>
 	 	 	<copyTable sourceTableName="developer_sub_b" targetTableName="developer_sub_b_old" ></copyTable> 
@@ -14,7 +14,7 @@
 		</operations>
 	</changeset>
 	<!--the tables to be merged must be in the changeset name-->
-	<!--<changeset id="merge-2-developer_sub_a-developer_sub_b" author="Peter">
+	<!--<changeset id="merge-2-developer_sub_a-developer_sub_b" author="Mary">
 		<description>Merge a table.</description>
 		<operations>
 	 	 	<createTable tableName="developer_sub_a_new">
